@@ -164,15 +164,15 @@ void ATDS_1Character::CharacterUpdate()
 
 void ATDS_1Character::ChangeMovementState()
 {
-	if (IsAiming)
+	if (IsAiming && !IsWalking && !IsSprinting)
 	{
 		MovementState = EMovementState::Aim_State;
 	}
-	else if (IsSprinting)
+	else if (IsSprinting && !IsAiming && !IsWalking)
 	{
 		MovementState = EMovementState::Sprint_State;
 	}
-	else if (IsWalking)
+	else if (IsWalking && !IsAiming && !IsSprinting)
 	{
 		MovementState = EMovementState::Walk_State;
 	}
